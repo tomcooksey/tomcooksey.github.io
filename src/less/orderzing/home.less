@@ -18,3 +18,46 @@
     left: 0px;
     z-index: 100;
 }
+
+.centered-images {
+
+    .partner-logos {
+        padding: 0 140px;
+        margin: 0;
+        list-style: none;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -ms-flex-pack: distribute;
+        justify-content: space-around;
+
+        li {
+            width: auto;
+            height: 40px;
+            margin-bottom: 0;
+            text-align: center;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+
+            @media only screen and (max-width : @screen-md) {
+                width: 167px;
+            }
+
+            img {
+                height: 40px;
+            }
+        }
+    }
+
+
+}
+
+.cluster-image {
+    margin: auto;
+    max-width: 100%;
+}

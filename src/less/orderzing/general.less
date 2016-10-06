@@ -66,9 +66,13 @@
     background-color: @virtually-black;
 }
 
+.navmenu-fixed-right {
+   left: auto !important;
+}
+
 .navbar {
 
-    transition: background-color 0.5s ease;
+    transition: background-color 0.3s ease;
 
 
 
@@ -82,7 +86,7 @@
         padding-bottom: 24px;
     }
 
-    @media only screen and (min-width : @screen-xs) {
+    @media only screen and (min-width : 0px) and (max-width: @screen-sm) {
         padding-top: 0px;
         padding-bottom: 0px;
         max-height: 80px;
@@ -132,6 +136,44 @@
         width: 0px;
         height: 0px;
     }
+
+    button.navbar-toggle {
+        margin-top: 20px;
+        background-color: transparent!important;
+
+        border: 0px;
+
+        .icon-bar {
+            transition: background-color 0.3s ease;
+            width: 15px;
+            height: 3px;
+            
+            background-color: @orderzing-pink;
+        }
+    }
+
+    button.navbar-toggle.collapsed {
+
+        .icon-bar {
+            background-color: #fff;
+        }
+    }
+
+    button.navbar-toggle:hover {
+        background-color: transparent;
+
+        .icon-bar {
+            background-color: @orderzing-pink;
+        }
+    }
+
+    button.navbar-toggle.active {
+        background-color: transparent;
+
+        .icon-bar {
+            background-color: @orderzing-pink;
+        }
+    }
 }
 
 .section {
@@ -157,18 +199,36 @@ h3 {
     margin: 0px;
     display: block;
     text-align: center;
+    position: relative;
     margin-bottom: 34px;
 }
 
-.centered-images {
+h3.with-line:after {
+    content: "";
+    width: 48px;
+    position: absolute;
+    left: 1px;
+    height: 2px;
+    background-color: @orderzing-pink;
+    bottom: -20px;
+}
 
+h4 {
+    font-family: "BentonSans-Book";
+    font-size: 30px;
+    font-weight: normal;
+    margin-left:-1px;
+}
+
+p {
+    font-family: "ProximaNova-Light";
+    font-size: 20px;
+}
+
+.left {
+    text-align: left;
+}
+
+.centered {
     text-align: center;
-
-    img {
-        margin: 5px;
-        vertical-align: middle;
-        margin-left: 10px;
-        margin-right:10px;
-        margin-bottom: 20px;
-    }
 }
