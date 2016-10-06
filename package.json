@@ -1,0 +1,19 @@
+{
+  "name": "orderzing",
+  "version": "1.0.0",
+  "description": "Orderzing Website",
+  "dependencies": {
+    "gulp-watch-less": "^1.0.1"
+  },
+  "devDependencies": {
+    "gulp-less": "^3.1.0",
+    "gulp-watch": "^4.3.10",
+    "gulp-watch-less": "^1.0.1",
+    "less-plugin-clean-css": "^1.5.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

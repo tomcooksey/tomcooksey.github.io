@@ -1,0 +1,174 @@
+.mask {
+    background-color: @mask-color;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+}
+
+.jumbotron {
+    position: relative;
+    margin-bottom: 0px;
+    .container {
+        position: relative;
+        z-index: 101;
+    }
+
+    p.centered {
+        margin-top: 20px;
+        text-align: center;
+
+        @media only screen and (min-width : @screen-md) {
+            margin-top: 60px;
+        }
+    }
+
+    .btn-primary {
+        text-transform: uppercase;
+        font-family: "ProximaNova-Light";
+        font-size: 14px;
+        padding: 20px 30px 20px 30px;
+    }
+
+    h1 {
+        text-align: center;
+        
+        @media only screen and (min-width : @screen-md) {
+            font-size: 60px;
+            padding: 0px 100px 0px 100px;
+        }
+        color: #fff;
+        
+    }
+
+    h2 {
+        text-align: center;
+        font-family: "BentonSans-Book";
+        @media only screen and (min-width : @screen-md) {
+            font-size: 24px;
+        }
+
+        @media only screen and (max-width : @screen-md) {
+            font-size: 18px;
+        }
+        
+        color: @sub-color;
+    }
+
+    a {
+        text-align: center;
+    }
+}
+
+.navbar.scrolled {
+    background-color: @virtually-black;
+}
+
+.navbar {
+
+    transition: background-color 0.5s ease;
+
+
+
+    .nav {
+        margin-top: 12px;
+        
+    }
+
+    @media only screen and (min-width : @screen-sm) {
+        padding-top: 10px;
+        padding-bottom: 24px;
+    }
+
+    @media only screen and (min-width : @screen-xs) {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        max-height: 80px;
+
+    }
+
+    li:hover:after, li.active:after {
+        width: ~"calc(100% - 30px)";
+        height: 1px;
+        background-color: #fff;
+        position: absolute;
+        @media only screen and (max-width : @screen-md) {
+            bottom: 16px;
+        }
+        bottom: 10px;
+        left: 15px;
+        content: "";
+    }
+
+    a {
+        font-family: "ProximaNova-Light";
+        font-size: 14px;
+        text-transform: uppercase;
+
+        @media only screen and (max-width : @screen-md) {
+            font-size: 12px;
+        }
+    }
+
+    li.get-app {
+        
+        a {
+            transition: background-color 0.5s ease;
+            margin-left: 10px;
+            padding: 14px;
+            border: 1px solid @orderzing-pink;
+            border-radius: 5px;
+
+        }
+
+        a:hover {
+            background-color: @orderzing-pink;
+        }
+    }
+
+    li.get-app:hover:after {
+        width: 0px;
+        height: 0px;
+    }
+}
+
+.section {
+    padding-top: 104px;
+    padding-bottom: 104px;
+}
+
+.small-section {
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+.light-grey {
+    background-color: @light-grey;
+}
+
+h3 {
+    color: @dark-grey;
+    font-size: 14px;
+    font-family: "ProximaNova-Light";
+    font-weight: normal;
+    text-transform: uppercase;
+    margin: 0px;
+    display: block;
+    text-align: center;
+    margin-bottom: 34px;
+}
+
+.centered-images {
+
+    text-align: center;
+
+    img {
+        margin: 5px;
+        vertical-align: middle;
+        margin-left: 10px;
+        margin-right:10px;
+        margin-bottom: 20px;
+    }
+}
