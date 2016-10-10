@@ -109,7 +109,8 @@
               nav = $('.navbar'),
               slideIn = $('.slide-in-menu'),
               body = $('body'),
-              fixed = document.getElementsByClassName('wrapper')[0];
+              fixed = document.getElementsByClassName('wrapper')[0],
+              nacClone;
 
           function disableScroll(e) {
             e.preventDefault();
@@ -117,23 +118,38 @@
 
           function wrapperClick() {
 
+            setTimeout(function() {
+              navClone.remove();
+              navClone = null;
 
+              nav.removeClass('hidden');
+
+            },400);
+
+            navClone.css('top', '0px');
+            
             wrapper.removeClass('open');
             slideIn.removeClass('open');
+
+            navClone.css('top', body.scrollTop() + 'px');
+            navClone.css('position', 'absolute');
+
             fixed.removeEventListener('touchmove', disableScroll, false);
-            setTimeout(function() {
-              nav.css('top', '0px');
-              nav.removeClass('scroll-fix');
-              
-            }, 200);
 
           }
 
           $('.navbar-toggle').on('click', function() {
 
             if(!wrapper.hasClass('open')) {
-              nav.addClass('scroll-fix');
-              nav.css('top', body.scrollTop() + 'px')
+
+              navClone = nav.clone();
+              
+              navClone.appendTo(wrapper);
+              navClone.css('top', body.scrollTop() + 'px');
+              navClone.css('position', 'absolute');
+
+              nav.addClass('hidden');
+
               wrapper.addClass('open');
               slideIn.addClass('open');
 
@@ -142,8 +158,6 @@
               setTimeout(function() {
                 wrapper.one('click', wrapperClick);
               }, 100);
-            }else{
-              wrapperClick();
             }
             
           });
