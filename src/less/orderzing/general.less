@@ -5,7 +5,7 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    z-index: 100;
+    z-index: 2;
 }
 
 .jumbotron {
@@ -13,7 +13,7 @@
     margin-bottom: 0px;
     .container {
         position: relative;
-        z-index: 101;
+        z-index: 3;
     }
 
     p.centered {
@@ -66,14 +66,39 @@
     background-color: @virtually-black;
 }
 
-.navmenu-fixed-right {
-   left: auto !important;
+.slide-in-menu {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 256px;
+    height: 100%;
+    min-height: 100%;
+    z-index: 1;
+    background-color: red;
+}
+
+.wrapper {
+    position: relative;
+    z-index: 2;
+    right: 0px;
+    transition: right 300ms ease;
+    background-color: #fff;
+}
+
+.wrapper.open {
+    //transform: translate3d(-256px, 0px, 0px);
+    right: 256px;
+}
+
+.navbar.open {
+    transform: translate3d(-256px, 0px, 0px);
 }
 
 .navbar {
-
+    backface-visibility: hidden;
     transition: background-color 0.3s ease;
-
+    z-index:4;
+    transition: transform 300ms ease;
 
 
     .nav {
@@ -86,7 +111,7 @@
         padding-bottom: 24px;
     }
 
-    @media only screen and (min-width : 0px) and (max-width: @screen-sm) {
+    @media only screen and (min-width : 0px) and (max-width: (@screen-sm - 1)) {
         padding-top: 0px;
         padding-bottom: 0px;
         max-height: 80px;

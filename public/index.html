@@ -9,7 +9,6 @@
 
     <!-- Bootstrap -->
     <link href="css/orderzing.css" rel="stylesheet">
-    <link href="css/jasny-bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,14 +18,16 @@
     <![endif]-->
   </head>
   <body>
-    <div class="navmenu navmenu-default navmenu-fixed-left offcanvas">
-      Hello this is me
+  <div class="slide-in-menu">
+      Now you see me...
     </div>
+  <div class="wrapper">
+
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target=".navmenu" aria-expanded="false" data-canvas="body">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -36,7 +37,7 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse main-nav-content">
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">How it works</a></li>
@@ -67,7 +68,7 @@
           <li><img src="images/partner-logos/dinerware.png" /></li>
           <li><img src="images/partner-logos/infogenesis.png" /></li>
           <li><img src="images/partner-logos/micros.png" /></li>
-          <li><img src="images/partner-logos/aloha.png" /></li>
+          <li><img src="images/partner-logos/aloha.png" height="28" /></li>
         </ul>
       
       </div>
@@ -88,12 +89,11 @@
       </div>
       </div>
     </div>
-
+</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/jasny-bootstrap.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -103,6 +103,35 @@
             } else {
               $('nav').removeClass('scrolled');
             }
+          });
+
+          var wrapper = $('.wrapper'),
+              nav = $('.navbar');
+
+          function wrapperClick() {
+
+            console.log('doing it');
+
+            wrapper.removeClass('open');
+            nav.removeClass('open');
+
+          }
+
+          $('.navbar-toggle').on('click', function() {
+
+            if(!wrapper.hasClass('open')) {
+              wrapper.addClass('open');
+              nav.addClass('open');
+
+              setTimeout(function() {
+                wrapper.one('click', wrapperClick);
+              }, 100);
+            }else{
+              wrapper.removeClass('open');
+              nav.removeClass('open');
+
+            }
+            
           });
         });
     </script>
