@@ -81,22 +81,17 @@
     position: relative;
     z-index: 2;
     right: 0px;
-    transition: right 300ms ease;
+    transition: transform 300ms ease;
     background-color: #fff;
 }
 
 .wrapper.open {
-    //transform: translate3d(-256px, 0px, 0px);
-    right: 256px;
-}
-
-.navbar.open {
     transform: translate3d(-256px, 0px, 0px);
 }
 
 .navbar {
     backface-visibility: hidden;
-    transition: background-color 300ms ease, transform 300ms ease;
+    transition: background-color 300ms, transform 300ms ease;
     z-index:4;
 
 
