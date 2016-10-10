@@ -69,12 +69,12 @@
 .slide-in-menu {
     position: fixed;
     top: 0px;
-    right: -256px;
-    width: 256px;
+    right: -280px;
+    width: 280px;
     transition: right 300ms ease;
     height: 100%;
     min-height: 100%;
-    z-index: 1;
+    z-index: 10;
     background-color: #fff;
 }
 
@@ -91,18 +91,9 @@
 }
 
 .wrapper.open {
-    transform: translate3d(-256px, 0px, 0px);
+    transform: translate3d(-100px, 0px, 0px);
 }
 
-.disable-scroll {
-    margin: 0px;
-    height: 100%;
-    overflow: hidden;
-}
-
-.navbar.scroll-fix {
-    position: absolute;
-}
 
 wrapper.open .navbar {
     top: 0px!important;
@@ -110,7 +101,7 @@ wrapper.open .navbar {
 
 .navbar {
     backface-visibility: hidden;
-    transition: background-color 300ms, transform 300ms ease;
+    transition: background-color 300ms;
     z-index:4;
 
     position: fixed;

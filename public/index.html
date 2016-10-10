@@ -108,20 +108,24 @@
           var wrapper = $('.wrapper'),
               nav = $('.navbar'),
               slideIn = $('.slide-in-menu'),
-              body = $('body');
+              body = $('body'),
+              fixed = document.getElementsByClassName('wrapper')[0];
 
-
+          function disableScroll(e) {
+            e.preventDefault();
+          }
 
           function wrapperClick() {
 
 
             wrapper.removeClass('open');
             slideIn.removeClass('open');
-            body.removeClass('disable-scroll');
+            fixed.removeEventListener('touchmove', disableScroll, false);
             setTimeout(function() {
+              nav.css('top', '0px');
               nav.removeClass('scroll-fix');
-              nav.css('top', '0px')
-            }, 300);
+              
+            }, 200);
 
           }
 
@@ -132,7 +136,8 @@
               nav.css('top', body.scrollTop() + 'px')
               wrapper.addClass('open');
               slideIn.addClass('open');
-              body.addClass('disable-scroll');
+
+              fixed.addEventListener('touchmove', disableScroll);
 
               setTimeout(function() {
                 wrapper.one('click', wrapperClick);
