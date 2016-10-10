@@ -19,8 +19,8 @@
   </head>
   <body>
   <div class="slide-in-menu">
-      Now you see me...
-    </div>
+    Now you see me...
+  </div>
   <div class="wrapper">
 
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -113,7 +113,7 @@
             console.log('doing it');
 
             wrapper.removeClass('open');
-            nav.removeClass('open');
+            //nav.removeClass('open');
 
           }
 
@@ -121,14 +121,14 @@
 
             if(!wrapper.hasClass('open')) {
               wrapper.addClass('open');
-              nav.addClass('open');
+              //nav.addClass('open');
 
               setTimeout(function() {
                 wrapper.one('click', wrapperClick);
               }, 100);
             }else{
               wrapper.removeClass('open');
-              nav.removeClass('open');
+              //nav.removeClass('open');
 
             }
             
