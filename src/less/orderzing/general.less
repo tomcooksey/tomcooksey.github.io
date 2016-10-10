@@ -69,12 +69,17 @@
 .slide-in-menu {
     position: fixed;
     top: 0px;
-    right: 0px;
+    right: -256px;
     width: 256px;
+    transition: right 300ms ease;
     height: 100%;
     min-height: 100%;
     z-index: 1;
-    background-color: red;
+    background-color: #fff;
+}
+
+.slide-in-menu.open {
+    right: 0px;
 }
 
 .wrapper {
@@ -89,11 +94,29 @@
     transform: translate3d(-256px, 0px, 0px);
 }
 
+.disable-scroll {
+    margin: 0px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.navbar.scroll-fix {
+    position: absolute;
+}
+
+wrapper.open .navbar {
+    top: 0px!important;
+}
+
 .navbar {
     backface-visibility: hidden;
     transition: background-color 300ms, transform 300ms ease;
     z-index:4;
 
+    position: fixed;
+    top: 0;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 
     .nav {
         margin-top: 12px;
