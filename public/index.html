@@ -128,7 +128,7 @@
     <script>
         $(document).ready(function() {
 
-          console.log('v1.0.4');
+          console.log('v1.0.5');
 
           var scrollLock = false,
               $window = $(window);
@@ -141,6 +141,10 @@
               nacClone;
 
           $window.scroll(function() {
+
+            if(noChangeOnSCroll) {
+              return;
+            }
 
             if ($window.scrollTop() > 50) {
               $('nav').addClass('scrolled');
@@ -163,9 +167,6 @@
 
             },200);
 
-            document.ontouchmove = function ( event ) {
-              return true;
-            }
             
             wrapper.removeClass('open');
             slideIn.removeClass('open');
@@ -176,26 +177,6 @@
           $('.navbar-toggle').on('click', function() {
 
             if(!wrapper.hasClass('open')) {
-
-              document.ontouchmove = function ( event ) {
-
-                  var isTouchMoveAllowed = true, target = event.target;
-
-                  while ( target !== null ) {
-                      if ( target.classList && target.classList.contains( 'wrapper' ) ) {
-                          isTouchMoveAllowed = false;
-                          break;
-                      }
-                      target = target.parentNode;
-                  }
-
-                  if ( !isTouchMoveAllowed ) {
-                      event.preventDefault();
-                  }else{
-                    event.stopPropagation();
-                  }
-
-              }
 
               nav.addClass('hidden');
 
