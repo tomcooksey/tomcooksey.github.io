@@ -166,6 +166,7 @@
             wrapper.removeClass('open');
             slideIn.removeClass('open');
             body.removeClass('open');
+            $('html').removeClass('open');
 
             navClone.css('top', body.scrollTop() + 'px');
             navClone.css('position', 'absolute');
@@ -186,6 +187,7 @@
               nav.addClass('hidden');
 
               body.addClass('open');
+              $('html').addClass('open');
 
               wrapper.addClass('open');
               slideIn.addClass('open');
