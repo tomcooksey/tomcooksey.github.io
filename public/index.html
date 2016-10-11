@@ -138,9 +138,9 @@
               fixed = document.getElementsByClassName('wrapper')[0],
               nacClone;
 
-          wrapper.scroll(function() {
+          $window.scroll(function() {
 
-            if (wrapper.scrollTop() > 50) {
+            if ($window.scrollTop() > 50) {
               $('nav').addClass('scrolled');
             } else {
               $('nav').removeClass('scrolled');
@@ -165,8 +165,9 @@
             
             wrapper.removeClass('open');
             slideIn.removeClass('open');
+            body.removeClass('open');
 
-            navClone.css('top', wrapper.scrollTop() + 'px');
+            navClone.css('top', body.scrollTop() + 'px');
             navClone.css('position', 'absolute');
 
           }
@@ -179,10 +180,12 @@
 
               
               navClone.appendTo(wrapper);
-              navClone.css('top', wrapper.scrollTop() + 'px');
+              navClone.css('top', body.scrollTop() + 'px');
               navClone.css('position', 'absolute');
 
               nav.addClass('hidden');
+
+              body.addClass('open');
 
               wrapper.addClass('open');
               slideIn.addClass('open');
