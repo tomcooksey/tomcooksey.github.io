@@ -209,14 +209,17 @@ body {
     background-color: #fff;
 }
 
+.navbar-open {
+    transform: translate3d(-256px, 0px, 0px);
+}
+
 .navbar {
     backface-visibility: hidden;
     transition: background-color 300ms ease;
     z-index:4;
+    transition: transform 300ms ease;
     position: fixed;
     top: 0;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
 
     .nav {
         margin-top: 12px;

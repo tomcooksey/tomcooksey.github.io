@@ -45,9 +45,7 @@
     </div>
     
   </div>
-  <div class="wrapper" id="panel">
-
-    <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -78,6 +76,9 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+  <div class="wrapper" id="panel">
+
+    
     <div class="jumbotron home">
       <div class="mask"></div>
       <div class="container">
@@ -140,11 +141,12 @@
           });
 
           var scrollLock = false,
-              $window = $(window);
+              $window = $(window),
+              noChangeOnScroll = false;
 
           $window.scroll(function() {
 
-            if(noChangeOnSCroll) {
+            if(noChangeOnScroll) {
               return;
             }
 
@@ -159,8 +161,17 @@
             
           });
 
+          slideout.on('beforeopen', function() {
+            document.querySelector('.navbar').classList.add('navbar-open');
+          });
+
+          slideout.on('beforeclose', function() {
+            document.querySelector('.navbar').classList.remove('navbar-open');
+          });
+
           $('.navbar-toggle').on('click', function() {
               slideout.toggle();
+
           });
         });
     </script>
