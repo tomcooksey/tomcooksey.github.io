@@ -128,7 +128,7 @@
     <script>
         $(document).ready(function() {
 
-          console.log('v1.0.2');
+          console.log('v1.0.3');
 
           var scrollLock = false,
               $window = $(window);
@@ -198,6 +198,8 @@
 
                   if ( !isTouchMoveAllowed ) {
                       event.preventDefault();
+                  }else{
+                    event.stopPropagation();
                   }
 
               }
