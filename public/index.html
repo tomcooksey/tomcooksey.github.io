@@ -126,27 +126,23 @@
           var scrollLock = false,
               $window = $(window);
 
-          $window.scroll(function() {
-
-            if(scrollLock) {
-                $window.scrollTop(previousScrollTop); 
-            }
-
-            previousScrollTop = $window.scrollTop();
-
-            if ($(document).scrollTop() > 50) {
-              $('nav').addClass('scrolled');
-            } else {
-              $('nav').removeClass('scrolled');
-            }
-          });
-
           var wrapper = $('.wrapper'),
               nav = $('.navbar'),
               slideIn = $('.slide-in-menu'),
               body = $('body'),
               fixed = document.getElementsByClassName('wrapper')[0],
               nacClone;
+
+          wrapper.scroll(function() {
+
+            if (wrapper.scrollTop() > 50) {
+              $('nav').addClass('scrolled');
+            } else {
+              $('nav').removeClass('scrolled');
+            }
+          });
+
+          
 
           function disableTouchScroll(e) {
             e.preventDefault();
@@ -174,18 +170,18 @@
 
             scrollLock = true;
 
-            wrapper.on('scroll touchmove mousewheel', disableMouseScrollWrapper);
+            //wrapper.on('scroll touchmove mousewheel', disableMouseScrollWrapper);
 
-            slideIn.on('scroll touchmove mousewheel', disableMouseScrollSlider);
+            //slideIn.on('scroll touchmove mousewheel', disableMouseScrollSlider);
           }
 
           function enableScroll() {
 
             scrollLock = false;
 
-            wrapper.off('scroll touchmove mousewheel', disableMouseScrollWrapper);
+            //wrapper.off('scroll touchmove mousewheel', disableMouseScrollWrapper);
 
-            slideIn.off('scroll touchmove mousewheel', disableMouseScrollSlider);
+            //slideIn.off('scroll touchmove mousewheel', disableMouseScrollSlider);
 
           }
 
@@ -199,7 +195,7 @@
 
             },400);
 
-            enableScroll();
+            //enableScroll();
 
             navClone.css('top', '0px');
             
@@ -219,7 +215,7 @@
 
               navClone = nav.clone();
 
-              disableScroll();
+              //disableScroll();
               
               navClone.appendTo(wrapper);
               navClone.css('top', body.scrollTop() + 'px');
