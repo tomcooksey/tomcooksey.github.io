@@ -158,7 +158,7 @@
           });
 
           $('.close-button').on('click', function() {
-            
+              slideout.close();
           });
 
           slideout.on('beforeopen', function() {
@@ -171,6 +171,9 @@
 
           $('.navbar-toggle').on('click', function() {
               slideout.toggle();
+              $('.wrapper').one('click', function() {
+                slideout.close();
+              });
 
           });
         });
