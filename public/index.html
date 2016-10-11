@@ -18,7 +18,7 @@
     <![endif]-->
   </head>
   <body>
-  <div class="slide-in-menu">
+  <div class="slide-in-menu" id="menu">
     <div class="close-button">
       <div class="cross-line left"></div>
       <div class="cross-line right"></div>
@@ -45,7 +45,7 @@
     </div>
     
   </div>
-  <div class="wrapper">
+  <div class="wrapper" id="panel">
 
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -124,21 +124,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/slideout.min.js"></script>
 
     <script>
         $(document).ready(function() {
 
-          console.log('v1.0.5');
+          console.log('v1.0.6');
+
+          var slideout = new Slideout({
+            'panel': document.getElementById('panel'),
+            'menu': document.getElementById('menu'),
+            'padding': 256,
+            'tolerance': 70,
+            'side': 'right'
+          });
 
           var scrollLock = false,
               $window = $(window);
-
-          var wrapper = $('.wrapper'),
-              nav = $('.navbar'),
-              slideIn = $('.slide-in-menu'),
-              body = $('body'),
-              fixed = document.getElementsByClassName('wrapper')[0],
-              nacClone;
 
           $window.scroll(function() {
 
@@ -154,42 +156,11 @@
           });
 
           $('.close-button').on('click', function() {
-            wrapper.trigger('click');
+            
           });
 
-          
-
-          function wrapperClick() {
-
-            setTimeout(function() {
-
-              nav.removeClass('hidden');
-
-            },200);
-
-            
-            wrapper.removeClass('open');
-            slideIn.removeClass('open');
-            body.removeClass('open');
-
-          }
-
           $('.navbar-toggle').on('click', function() {
-
-            if(!wrapper.hasClass('open')) {
-
-              nav.addClass('hidden');
-
-              body.addClass('open');
-
-              wrapper.addClass('open');
-              slideIn.addClass('open');
-
-              setTimeout(function() {
-                wrapper.one('click', wrapperClick);
-              }, 100);
-            }
-            
+              slideout.toggle();
           });
         });
     </script>
