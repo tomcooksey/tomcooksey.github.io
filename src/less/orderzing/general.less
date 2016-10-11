@@ -66,6 +66,13 @@
     background-color: @virtually-black;
 }
 
+.navbar-collapse .navbar-toggle {
+    display: block!important;
+    margin-top: 6px!important;
+    margin-left: 10px;
+    margin-right: 0px;
+}
+
 .slide-in-menu {
     position: fixed;
     top: 0px;
@@ -73,10 +80,41 @@
     width: 280px;
     transition: right 300ms ease;
     height: 100%;
+    padding-top: 20px;
     min-height: 100%;
     z-index: 10;
     background-color: #fff;
     border-left: 1px solid #ccc;
+    
+
+    .scroll {
+        overflow: auto;
+        height: 100%; 
+    }
+
+    ul {
+        font-family: "ProximaNova-Light";
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: bold;
+
+        margin-top: 20px;
+
+        li {
+            list-style: none;
+            margin-bottom: 10px;
+
+            a {
+                transition: color 200ms ease;
+                color: @virtually-black;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: @orderzing-pink;
+            }
+        }
+    }
 }
 
 .slide-in-menu.open {
@@ -93,6 +131,7 @@
 
 .wrapper.open {
     transform: translate3d(-100px, 0px, 0px);
+    overflow: hidden;
 }
 
 .navbar.hidden {
@@ -101,7 +140,7 @@
 
 .navbar {
     backface-visibility: hidden;
-    transition: background-color 300ms;
+    transition: background-color 300ms ease;
     z-index:4;
 
     position: fixed;
@@ -157,6 +196,11 @@
             padding: 14px;
             border: 1px solid @orderzing-pink;
             border-radius: 5px;
+
+            @media only screen and (max-width : @screen-md) {
+                padding: 6px;
+                margin-top: 7px;
+            }
 
         }
 

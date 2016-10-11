@@ -19,7 +19,26 @@
   </head>
   <body>
   <div class="slide-in-menu">
-    Now you see me...
+    <div class="scroll"> 
+      <ul class="primary">
+        <li class="active"><a href="#" >Home</a></li>
+        <li><a href="#" >How it works</a></li>
+        <li><a href="#" >Testimonials</a></li>
+        <li><a href="#" >Pricing</a></li>
+        <li><a href="#" >Get your app now</a></li>
+      </ul>
+      <ul class="secondary">
+        <li><a href="#">Marketing</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Terms of service</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Login</a></li>
+      </ul>
+    </div>
+    
   </div>
   <div class="wrapper">
 
@@ -43,7 +62,13 @@
             <li><a href="#">How it works</a></li>
             <li><a href="#">Testimonials</a></li>
             <li><a href="#">Pricing</a></li>
-            <li class="get-app"><a href="#">Get your app now</a></li>            
+            <li class="get-app"><a href="#">Get your app now</a></li>    
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>        
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -97,7 +122,18 @@
 
     <script>
         $(document).ready(function() {
-          $(window).scroll(function() {
+
+          var scrollLock = false,
+              $window = $(window);
+
+          $window.scroll(function() {
+
+            if(scrollLock) {
+                $window.scrollTop(previousScrollTop); 
+            }
+
+            previousScrollTop = $window.scrollTop();
+
             if ($(document).scrollTop() > 50) {
               $('nav').addClass('scrolled');
             } else {
@@ -112,8 +148,45 @@
               fixed = document.getElementsByClassName('wrapper')[0],
               nacClone;
 
-          function disableScroll(e) {
+          function disableTouchScroll(e) {
             e.preventDefault();
+          }
+
+          function disableMouseScrollSlider(event) {
+
+            var c = $('.scroll')[0];
+
+            if (event.target == c || $.contains(c, event.target)) {
+                console.log('in the area');
+                event.stopPropagation();
+            } else {
+                event.preventDefault();
+            }
+              
+          }
+
+          function disableMouseScrollWrapper(event) {
+            console.log('this');
+              event.preventDefault();
+          }
+
+          function disableScroll() {
+
+            scrollLock = true;
+
+            wrapper.on('scroll touchmove mousewheel', disableMouseScrollWrapper);
+
+            slideIn.on('scroll touchmove mousewheel', disableMouseScrollSlider);
+          }
+
+          function enableScroll() {
+
+            scrollLock = false;
+
+            wrapper.off('scroll touchmove mousewheel', disableMouseScrollWrapper);
+
+            slideIn.off('scroll touchmove mousewheel', disableMouseScrollSlider);
+
           }
 
           function wrapperClick() {
@@ -126,6 +199,8 @@
 
             },400);
 
+            enableScroll();
+
             navClone.css('top', '0px');
             
             wrapper.removeClass('open');
@@ -134,7 +209,7 @@
             navClone.css('top', body.scrollTop() + 'px');
             navClone.css('position', 'absolute');
 
-            fixed.removeEventListener('touchmove', disableScroll, false);
+            fixed.removeEventListener('touchmove', disableTouchScroll, false);
 
           }
 
@@ -143,6 +218,8 @@
             if(!wrapper.hasClass('open')) {
 
               navClone = nav.clone();
+
+              disableScroll();
               
               navClone.appendTo(wrapper);
               navClone.css('top', body.scrollTop() + 'px');
@@ -153,7 +230,7 @@
               wrapper.addClass('open');
               slideIn.addClass('open');
 
-              fixed.addEventListener('touchmove', disableScroll);
+              fixed.addEventListener('touchmove', disableTouchScroll);
 
               setTimeout(function() {
                 wrapper.one('click', wrapperClick);
