@@ -128,7 +128,7 @@
     <script>
         $(document).ready(function() {
 
-          console.log('v1.0.3');
+          console.log('v1.0.4');
 
           var scrollLock = false,
               $window = $(window);
@@ -158,25 +158,18 @@
           function wrapperClick() {
 
             setTimeout(function() {
-              navClone.remove();
-              navClone = null;
 
               nav.removeClass('hidden');
 
-            },400);
+            },200);
 
             document.ontouchmove = function ( event ) {
               return true;
             }
-
-            navClone.css('top', '0px');
             
             wrapper.removeClass('open');
             slideIn.removeClass('open');
             body.removeClass('open');
-
-            navClone.css('top', body.scrollTop() + 'px');
-            navClone.css('position', 'absolute');
 
           }
 
@@ -203,13 +196,6 @@
                   }
 
               }
-
-              navClone = nav.clone();
-
-              
-              navClone.appendTo(wrapper);
-              navClone.css('top', body.scrollTop() + 'px');
-              navClone.css('position', 'absolute');
 
               nav.addClass('hidden');
 
