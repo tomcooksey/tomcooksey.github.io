@@ -19,6 +19,10 @@
   </head>
   <body>
   <div class="slide-in-menu">
+    <div class="close-button">
+      <div class="cross-line left"></div>
+      <div class="cross-line right"></div>
+    </div>
     <div class="scroll"> 
       <ul class="primary">
         <li class="active"><a href="#" >Home</a></li>
@@ -33,9 +37,10 @@
         <li><a href="#">Careers</a></li>
         <li><a href="#">Blog</a></li>
         <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class=" secondary terms">
         <li><a href="#">Terms of service</a></li>
         <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Login</a></li>
       </ul>
     </div>
     
@@ -140,6 +145,10 @@
             } else {
               $('nav').removeClass('scrolled');
             }
+          });
+
+          $('.close-button').on('click', function() {
+            wrapper.trigger('click');
           });
 
           function wrapperClick() {
