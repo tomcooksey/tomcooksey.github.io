@@ -142,48 +142,23 @@
             }
           });
 
-          
+          function removeIOSRubberEffect( element ) {
 
-          function disableTouchScroll(e) {
-            e.preventDefault();
-          }
+              element.addEventListener( "touchstart", function () {
 
-          function disableMouseScrollSlider(event) {
+                  var top = element.scrollTop, totalScroll = element.scrollHeight, currentScroll = top + element.offsetHeight;
 
-            var c = $('.scroll')[0];
+                  if ( top === 0 ) {
+                      element.scrollTop = 1;
+                  } else if ( currentScroll === totalScroll ) {
+                      element.scrollTop = top - 1;
+                  }
 
-            if (event.target == c || $.contains(c, event.target)) {
-                console.log('in the area');
-                event.stopPropagation();
-            } else {
-                event.preventDefault();
-            }
-              
-          }
-
-          function disableMouseScrollWrapper(event) {
-            console.log('this');
-              event.preventDefault();
-          }
-
-          function disableScroll() {
-
-            scrollLock = true;
-
-            //wrapper.on('scroll touchmove mousewheel', disableMouseScrollWrapper);
-
-            //slideIn.on('scroll touchmove mousewheel', disableMouseScrollSlider);
-          }
-
-          function enableScroll() {
-
-            scrollLock = false;
-
-            //wrapper.off('scroll touchmove mousewheel', disableMouseScrollWrapper);
-
-            //slideIn.off('scroll touchmove mousewheel', disableMouseScrollSlider);
+              } );
 
           }
+
+          removeIOSRubberEffect( document.querySelector( ".wrapper" ) );
 
           function wrapperClick() {
 
@@ -205,8 +180,6 @@
             navClone.css('top', wrapper.scrollTop() + 'px');
             navClone.css('position', 'absolute');
 
-            fixed.removeEventListener('touchmove', disableTouchScroll, false);
-
           }
 
           $('.navbar-toggle').on('click', function() {
@@ -215,7 +188,6 @@
 
               navClone = nav.clone();
 
-              //disableScroll();
               
               navClone.appendTo(wrapper);
               navClone.css('top', wrapper.scrollTop() + 'px');
@@ -225,8 +197,6 @@
 
               wrapper.addClass('open');
               slideIn.addClass('open');
-
-              fixed.addEventListener('touchmove', disableTouchScroll);
 
               setTimeout(function() {
                 wrapper.one('click', wrapperClick);
