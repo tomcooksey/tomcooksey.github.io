@@ -19,7 +19,7 @@
   </head>
   <body>
   <div class="slide-in-menu" id="menu">
-    <a class="close-button">
+    <a href="#" class="close-button">
       <div class="cross-line left"></div>
       <div class="cross-line right"></div>
     </a>
@@ -130,7 +130,7 @@
     <script>
         $(document).ready(function() {
 
-          console.log('v1.0.8');
+          console.log('v1.0.9');
 
           var slideout = new Slideout({
             'panel': document.getElementById('panel'),
@@ -157,7 +157,8 @@
             }
           });
 
-          $('.close-button').on('click', function() {
+          $('.close-button').on('click', function(e) {
+              e.preventDefault();
               slideout.close();
           });
 
