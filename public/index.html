@@ -195,14 +195,14 @@
 
             },400);
 
-            //enableScroll();
+            enableScroll();
 
             navClone.css('top', '0px');
             
             wrapper.removeClass('open');
             slideIn.removeClass('open');
 
-            navClone.css('top', body.scrollTop() + 'px');
+            navClone.css('top', wrapper.scrollTop() + 'px');
             navClone.css('position', 'absolute');
 
             fixed.removeEventListener('touchmove', disableTouchScroll, false);
@@ -218,7 +218,7 @@
               //disableScroll();
               
               navClone.appendTo(wrapper);
-              navClone.css('top', body.scrollTop() + 'px');
+              navClone.css('top', wrapper.scrollTop() + 'px');
               navClone.css('position', 'absolute');
 
               nav.addClass('hidden');
