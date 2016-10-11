@@ -19,10 +19,10 @@
   </head>
   <body>
   <div class="slide-in-menu" id="menu">
-    <div class="close-button">
+    <a class="close-button">
       <div class="cross-line left"></div>
       <div class="cross-line right"></div>
-    </div>
+    </a>
     <div class="scroll"> 
       <ul class="primary">
         <li class="active"><a href="#" >Home</a></li>
@@ -130,7 +130,7 @@
     <script>
         $(document).ready(function() {
 
-          console.log('v1.0.7');
+          console.log('v1.0.8');
 
           var slideout = new Slideout({
             'panel': document.getElementById('panel'),
